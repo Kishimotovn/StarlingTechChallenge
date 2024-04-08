@@ -6,7 +6,7 @@ import DataLoad
 public struct AppRoot {
 
     @ObservableState
-    public struct State: Equatable {
+    public struct State {
         var mode: Mode.State
 
         public init(mode: Mode.State = .dataLoad(.init())) {
@@ -26,9 +26,7 @@ public struct AppRoot {
         Reduce<State, Action> { state, action in
             switch action {
             case .mode(.dataLoad(.delegate(.accountsUpdated(let accounts)))):
-                
-                print("got accounts", accounts)
-//                state.mode = .accounts(accounts)
+                state.mode = .accountList(.init(accounts: accounts))
                 return .none
             case .mode:
                 return .none

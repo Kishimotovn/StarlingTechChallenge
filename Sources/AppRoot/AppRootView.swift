@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 import ComposableArchitecture
 import DataLoad
+import AccountList
 
 public struct AppRootView: View {
     let store: StoreOf<AppRoot>
@@ -15,6 +16,10 @@ public struct AppRootView: View {
         case .dataLoad:
             if let store = store.scope(state: \.mode.dataLoad, action: \.mode.dataLoad) {
                 DataLoadView(store: store)
+            }
+        case .accountList:
+            if let store = store.scope(state: \.mode.accountList, action: \.mode.accountList) {
+                AccountListView(store: store)
             }
         }
     }

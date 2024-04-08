@@ -4,6 +4,8 @@
 import PackageDescription
 
 private let modules = [
+    "AccountFeed",
+    "AccountList",
     "AppRoot",
     "APIClient",
     "AuthClient",
@@ -26,8 +28,24 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "AccountFeed",
+            dependencies: [
+                "APIClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "AccountList",
+            dependencies: [
+                "AccountFeed",
+                "APIClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
             name: "AppRoot",
             dependencies: [
+                "AccountList",
                 "DataLoad",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]

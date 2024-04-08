@@ -1,6 +1,7 @@
 import Foundation
 import ComposableArchitecture
 import APIClient
+import Models
 
 @Reducer
 public struct DataLoad {

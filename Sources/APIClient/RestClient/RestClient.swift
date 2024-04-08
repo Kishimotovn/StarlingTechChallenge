@@ -33,12 +33,28 @@ actor RestClient {
         return (data, response)
     }
 
+    /**
+    Headers as per requirements
+     */
     private func addHeaders(for request: inout URLRequest) async {
         @Dependency(AuthClient.self) var authClient
 
         if let accessToken = await authClient.getAccessToken() {
-            request.setValue(HTTPHeader.Value.bearer(jwt: accessToken), forHTTPHeaderField: HTTPHeader.Key.authorization)
+            request.setValue(
+                HTTPHeader.Value.bearer(jwt: accessToken),
+                forHTTPHeaderField: HTTPHeader.Key.authorization
+            )
         }
+
+        request.setValue(
+            HTTPHeader.Key.accept,
+            forHTTPHeaderField: HTTPHeader.Value.applicationJSON
+        )
+
+        request.setValue(
+            HTTPHeader.Key.userAgent,
+            forHTTPHeaderField: HTTPHeader.Value.userAgent
+        )
     }
 }
 
@@ -52,4 +68,3 @@ extension RestClient {
 enum RestClientError: Error {
     case invalidDateFormat(value: String)
 }
-

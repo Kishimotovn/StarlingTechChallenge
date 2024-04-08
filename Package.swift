@@ -11,6 +11,8 @@ private let modules = [
     "AuthClient",
     "ConfigConstant",
     "DataLoad",
+    "Models",
+    "Utils",
     "XCTestDebugSupport",
 ]
 
@@ -31,6 +33,8 @@ let package = Package(
             name: "AccountFeed",
             dependencies: [
                 "APIClient",
+                "Models",
+                "Utils",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -39,6 +43,7 @@ let package = Package(
             dependencies: [
                 "AccountFeed",
                 "APIClient",
+                "Models",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -55,6 +60,7 @@ let package = Package(
             dependencies: [
                 "AuthClient",
                 "ConfigConstant",
+                "Models",
                 "XCTestDebugSupport",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
@@ -75,8 +81,19 @@ let package = Package(
             name: "DataLoad",
             dependencies: [
                 "APIClient",
+                "Models",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
+        ),
+        .target(
+            name: "Models"
+        ),
+        .target(
+            name: "Utils"
+        ),
+        .testTarget(
+            name: "AccountFeedTests",
+            dependencies: ["AccountFeed"]
         ),
         .testTarget(
             name: "AppRootTests",
@@ -85,6 +102,10 @@ let package = Package(
         .testTarget(
             name: "DataLoadTests",
             dependencies: ["DataLoad"]
+        ),
+        .testTarget(
+            name: "UtilsTests",
+            dependencies: ["Utils"]
         ),
         .target(name: "XCTestDebugSupport"),
     ]

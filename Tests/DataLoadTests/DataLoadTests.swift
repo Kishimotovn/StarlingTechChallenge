@@ -2,13 +2,14 @@ import XCTest
 import ComposableArchitecture
 @testable import DataLoad
 import APIClient
+import Models
 
 final class DataLoadTests: XCTestCase {
     @MainActor
     func testTaskSuccess() async throws {
         let testAccounts: [Account] = [
             .init(
-                accountID: "accountID",
+                accountID: UUID(),
                 accountType: .primary,
                 defaultCategory: "defaultCategory",
                 createdAt: Date(),

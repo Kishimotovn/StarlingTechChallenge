@@ -1,30 +1,22 @@
 import Foundation
 
-public struct Account: Decodable, Identifiable {
-    public enum AccountType: String, Decodable {
+public struct Account: Identifiable {
+    public enum AccountType: String {
         case primary = "PRIMARY"
         case additional = "ADDITIONAL"
         case loan = "LOAN"
         case fixedTermDeposit = "FIXED_TERM_DEPOSIT"
     }
-    public let id: String
+
+    public let id: UUID
     public let accountType: AccountType
     public let defaultCategory: String
     public let createdAt: Date
     public let name: String
-    public let currency: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "accountUid"
-        case accountType
-        case defaultCategory
-        case createdAt
-        case name
-        case currency
-    }
+    public let currency: String // Too lazy to convert to enum
 
     public init(
-        accountID: String,
+        accountID: UUID,
         accountType: AccountType,
         defaultCategory: String,
         createdAt: Date,
@@ -37,6 +29,17 @@ public struct Account: Decodable, Identifiable {
         self.createdAt = createdAt
         self.name = name
         self.currency = currency
+    }
+}
+
+extension Account.AccountType: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .primary: "Primary"
+        case .additional: "Additional"
+        case .fixedTermDeposit: "Fixed Term Deposit"
+        case .loan: "Loan"
+        }
     }
 }
 

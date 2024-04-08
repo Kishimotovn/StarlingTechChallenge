@@ -10,6 +10,6 @@ public struct AccountFeedView: View {
     }
 
     public var body: some View {
-        Text("Account Feed View for \(store.accountID)")
+        Text("Account Feed View for \(store.account.id)")
     }
 }

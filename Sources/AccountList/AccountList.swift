@@ -2,11 +2,12 @@ import Foundation
 import ComposableArchitecture
 import AccountFeed
 import APIClient
+import Models
 
 @Reducer
 public struct AccountList {
     @ObservableState
-    public struct State {
+    public struct State: Equatable {
         var path: StackState<AccountFeed.State> = .init()
         var accounts: IdentifiedArrayOf<Account>
 

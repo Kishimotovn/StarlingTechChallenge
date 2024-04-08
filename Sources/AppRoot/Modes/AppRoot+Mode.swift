@@ -6,7 +6,7 @@ import AccountList
 public extension AppRoot {
     @Reducer struct Mode {
         @ObservableState
-        public enum State {
+        public enum State: Equatable {
             case dataLoad(DataLoad.State)
             case accountList(AccountList.State)
         }

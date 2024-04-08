@@ -6,7 +6,7 @@ import DataLoad
 public struct AppRoot {
 
     @ObservableState
-    public struct State {
+    public struct State: Equatable {
         var mode: Mode.State
 
         public init(mode: Mode.State = .dataLoad(.init())) {

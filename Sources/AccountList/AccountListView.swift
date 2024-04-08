@@ -1,8 +1,8 @@
 import Foundation
 import ComposableArchitecture
 import SwiftUI
-import APIClient
 import AccountFeed
+import Models
 
 public struct AccountListView: View {
     @Bindable
@@ -21,7 +21,7 @@ public struct AccountListView: View {
                     store.accounts,
                     content: { account in
                         NavigationLink(
-                            state: AccountFeed.State(accountID: account.id)
+                            state: AccountFeed.State(account: account)
                         ) {
                             AccountListItem(account: account)
                         }
@@ -56,7 +56,7 @@ extension AccountListView {
                         .font(.headline)
                         .bold()
                         .foregroundColor(.primary)
-                    Text(account.accountType.rawValue)
+                    Text(account.accountType.description)
                         .font(.caption)
                         .foregroundColor(.primary)
                 }
@@ -71,14 +71,14 @@ extension AccountListView {
             initialState: AccountList.State(
                 accounts: [
                     .init(
-                        accountID: "accountID1",
+                        accountID: UUID(),
                         accountType: .primary,
                         defaultCategory: "defaultCategory",
                         createdAt: Date(),
                         name: "Phan Anh Tran"
                     ),
                     .init(
-                        accountID: "accountID2",
+                        accountID: UUID(),
                         accountType: .additional,
                         defaultCategory: "defaultCategory",
                         createdAt: Date(),

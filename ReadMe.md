@@ -10,6 +10,8 @@ The App contains a 3 screens, each with specific function:
 - AccountList: This screen displays a list of the user's accounts retrieved from the Starling Bank API. Users can select an account to view its transaction feed.
 - AccountFeed: This screen shows the transaction feed for the selected account. It includes a "Round Up" button, which allows users to round up their transactions for the week and transfer the difference to a savings goal. If the user doesn't have a savings goal set up, the app will guide them through the process of creating one.
 
+Each feature or screen is separated into its own Swift package, making it easier to maintain, colaborate and extend the codebase.
+
 ## Screen shots/Videos:
 
 | Light Theme                                                | Dark Theme                                              | Alert                      |

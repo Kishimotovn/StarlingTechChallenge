@@ -11,7 +11,6 @@ extension ISO8601DateFormatter {
 }
 
 final class DateExtensionsTests: XCTestCase {
-    @MainActor
     func testStartOfWeek() {
         var calendar = Calendar.current
         calendar.firstWeekday = 2

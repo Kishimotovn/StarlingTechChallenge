@@ -23,3 +23,19 @@ extension ConfigConstant: DependencyKey {
     public static var previewValue: ConfigConstant = .init()
     public static var liveValue: ConfigConstant = .live
 }
+
+#if DEBUG
+import XCTestDebugSupport
+
+extension ConfigConstant {
+    public mutating func overrideGetConfig(
+        with config: ConfigPlist
+    ) {
+        let fulfill = expectation(description: "getConfig Called")
+        self.getConfig = {
+            fulfill()
+            return config
+        }
+    }
+}
+#endif

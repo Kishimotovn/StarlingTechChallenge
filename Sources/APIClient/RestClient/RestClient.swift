@@ -24,9 +24,11 @@ actor RestClient {
     }()
 
     @Sendable func request(_ requestData: RequestData) async throws -> (Data, URLResponse) {
+        @Dependency(\.urlSession) var urlSession
+
         var request = try requestData.urlRequest(given: self.baseURL)
         await self.addHeaders(for: &request)
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await urlSession.data(for: request)
         if let error = APIError(response: response, data: data) {
             throw error
         }
@@ -47,13 +49,13 @@ actor RestClient {
         }
 
         request.setValue(
-            HTTPHeader.Key.accept,
-            forHTTPHeaderField: HTTPHeader.Value.applicationJSON
+            HTTPHeader.Value.applicationJSON,
+            forHTTPHeaderField: HTTPHeader.Key.accept
         )
 
         request.setValue(
-            HTTPHeader.Key.userAgent,
-            forHTTPHeaderField: HTTPHeader.Value.userAgent
+            HTTPHeader.Value.userAgent,
+            forHTTPHeaderField: HTTPHeader.Key.userAgent
         )
     }
 }

@@ -7,22 +7,12 @@ public struct AppError: Error {
     }
 
     public struct ErrorSource: Sendable, CustomStringConvertible {
-        /// File in which this location exists.
         public var file: String
-        
-        /// Function in which this location exists.
         public var function: String
-        
-        /// Line number this location belongs to.
         public var line: UInt
-        
-        /// Number of characters into the line this location starts at.
         public var column: UInt
-        
-        /// Optional start/end range of the source.
         public var range: Range<UInt>?
-        
-        /// Creates a new `SourceLocation`
+
         public init(
             file: String,
             function: String,
@@ -47,20 +37,23 @@ public struct AppError: Error {
     }
 
     public enum Value {
+        case failedToCreateSavingGoal
         case unknown
     }
     
     var identifier: String {
         switch self.value {
+        case .failedToCreateSavingGoal:
+            "failedToCreateSavingGoal"
         case .unknown:
-            return "unknown"
+            "unknown"
         }
     }
     
     var reason: String {
         switch self.value {
-        case .unknown:
-            return "Unknown Error Occured."
+        case .unknown, .failedToCreateSavingGoal:
+            "Unknown Error Occured."
         }
     }
     

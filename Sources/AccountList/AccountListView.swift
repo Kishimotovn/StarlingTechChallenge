@@ -23,7 +23,7 @@ public struct AccountListView: View {
                         NavigationLink(
                             state: AccountFeed.State(account: account)
                         ) {
-                            AccountListItem(account: account)
+                            AccountListItemView(account: account)
                         }
                     }
                 )
@@ -39,7 +39,7 @@ public struct AccountListView: View {
 }
 
 extension AccountListView {
-    struct AccountListItem: View {
+    struct AccountListItemView: View {
         let account: Account
         
         var body: some View {

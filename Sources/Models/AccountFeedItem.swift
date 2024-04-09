@@ -32,12 +32,19 @@ public extension AccountFeedItem {
     enum Direction: Sendable {
         case inbound
         case outbound
+
+        public var icon: String {
+            switch self {
+            case .inbound: "square.and.arrow.down.fill"
+            case .outbound: "square.and.arrow.up.fill"
+            }
+        }
     }
 }
 
 // MARK: - Source:
 public extension AccountFeedItem {
-    enum Source: String, Sendable {
+    enum Source: String, Sendable, CustomStringConvertible {
         case britishBusinessBankFees = "BRITISH_BUSINESS_BANK_FEES"
         case cardFeeCharge = "CARD_FEE_CHARGE"
         case cashDeposit = "CASH_DEPOSIT"
@@ -84,5 +91,18 @@ public extension AccountFeedItem {
         case withheldTax = "WITHHELD_TAX"
         case errorsAndOmissions = "ERRORS_AND_OMISSIONS"
         case interestV2Payment = "INTEREST_V2_PAYMENT"
+
+        public var description: String {
+            switch self {
+            case .fasterPaymentsIn:
+                "FPS In"
+            case .fasterPaymentsOut:
+                "FPS Out"
+            case .internalTransfer:
+                "Internal"
+            default:
+                self.rawValue
+            }
+        }
     }
 }

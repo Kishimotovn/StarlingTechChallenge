@@ -86,10 +86,17 @@ let package = Package(
             ]
         ),
         .target(
-            name: "Models"
+            name: "Models",
+            dependencies: [
+                "Utils",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
         ),
         .target(
-            name: "Utils"
+            name: "Utils",
+            dependencies: [
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
         ),
         .testTarget(
             name: "AccountFeedTests",
@@ -98,6 +105,10 @@ let package = Package(
         .testTarget(
             name: "AppRootTests",
             dependencies: ["AppRoot"]
+        ),
+        .testTarget(
+            name: "APIClientTests",
+            dependencies: ["APIClient"]
         ),
         .testTarget(
             name: "DataLoadTests",

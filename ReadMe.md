@@ -46,7 +46,7 @@ The project includes comprehensive unit tests to ensure the reliability and corr
 - macOS 14.0 or later
 
 1. Clone the repository: git clone https://github.com/Kishimotovn/StarlingTechChallenge.git
-2. Open the project in Xcode.
+2. Open the ![project](starling-ios/StarlingTechChallenge.xcodeproj) in Xcode
 3. Require a new access token from the Starling Developer Portal as mentioned here: [Challenge Document](Assets/Starling_Bank_Engineering__Technical_Challenge.pdf)
 4. Replace the token in this file: [AuthClientLive](Sources/AuthClient/AuthClientLive.swift)
 

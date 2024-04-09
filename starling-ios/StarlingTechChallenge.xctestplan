@@ -1,0 +1,56 @@
+{
+  "configurations" : [
+    {
+      "id" : "6E06A4D3-BD1B-44F6-ACA6-48B8D1C471FF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:StarlingTechChallenge.xcodeproj",
+      "identifier" : "0F4391A52BC2778700C7401D",
+      "name" : "StarlingTechChallenge"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "AppRootTests",
+        "name" : "AppRootTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "DataLoadTests",
+        "name" : "DataLoadTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "UtilsTests",
+        "name" : "UtilsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "AccountFeedTests",
+        "name" : "AccountFeedTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "APIClientTests",
+        "name" : "APIClientTests"
+      }
+    }
+  ],
+  "version" : 1
+}

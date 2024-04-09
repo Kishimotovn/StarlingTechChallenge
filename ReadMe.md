@@ -22,7 +22,7 @@ Each feature or screen is separated into its own Swift package, making it easier
 
 ## Screen shots/Videos:
 
-| Light Theme                                                | Dark Theme                                              | Alert                      |
+| Light Theme (Click for video)                              | Dark Theme (Click for video)                            | Alert                      |
 | ---------------------------------------------------------- | ------------------------------------------------------- | -------------------------- |
 | [![light Theme](Assets/light.png)](Assets/light_small.mp4) | [![Dark Theme](Assets/dark.png)](Assets/dark_small.mp4) | ![alert](Assets/alert.png) |
 

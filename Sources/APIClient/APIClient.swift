@@ -77,6 +77,18 @@ extension APIClient {
             return accounts
         }
     }
+    
+    public mutating func overrideAnyGetAccountFeed(
+        response: [AccountFeedItem],
+        throwing error: Error? = nil
+    ) {
+        self.getAccountFeed = { @Sendable _, _, _ in
+            if let error {
+                throw error
+            }
+            return response
+        }
+    }
 
     public mutating func overrideGetAccountFeed(
         accountID: String,

@@ -2,6 +2,7 @@ import Foundation
 import ComposableArchitecture
 import SwiftUI
 import Models
+import APIClient
 
 @ViewAction(for: AccountFeed.self)
 public struct AccountFeedView: View {
@@ -42,8 +43,14 @@ public struct AccountFeedView: View {
             .padding(.top, 16)
             
             List {
-                ForEach(store.feedItems) { item in
-                    AccountFeedItemView(item: item)
+                if store.feedItems.isEmpty {
+                    Text("No transactions occured during this period.")
+                        .italic()
+                        .font(.caption)
+                } else {
+                    ForEach(store.feedItems) { item in
+                        AccountFeedItemView(item: item)
+                    }
                 }
             }
             .frame(maxWidth: .infinity)
@@ -51,7 +58,7 @@ public struct AccountFeedView: View {
         .frame(maxWidth: .infinity)
         .navigationTitle("\(store.account.name)")
         .toolbar {
-            if !store.isLoading {
+            if !store.feedItems.isEmpty {
                 ToolbarItem {
                     if store.isRoundingUp {
                         ProgressView()
@@ -61,6 +68,7 @@ public struct AccountFeedView: View {
                         } label: {
                             Text("Round Up!")
                         }
+                        .disabled(store.isLoading)
                     }
                 }
             }
@@ -84,8 +92,10 @@ extension AccountFeedView {
                     Text(self.item.title)
                         .bold()
                         .font(.headline)
-                    Text(self.item.subtitle)
-                        .font(.footnote)
+                    if !self.item.subtitle.isEmpty {
+                        Text(self.item.subtitle)
+                            .font(.footnote)
+                    }
                 }
                 Spacer()
                 Divider()
@@ -112,6 +122,31 @@ extension AccountFeedView {
                 ),
                 reducer: AccountFeed.init
             )
+        )
+    }
+    .navigationBarTitleDisplayMode(.inline)
+}
+
+#Preview("empty list") {
+    NavigationStack {
+        AccountFeedView(
+            store: .init(
+                initialState: .init(
+                    account: Account.init(
+                        accountID: UUID(uuidString: "04a4f5ae-3962-4963-8e7f-da5b70ceb6fc")!,
+                        accountType: .primary,
+                        defaultCategory: "defaultCategory",
+                        createdAt: Date(),
+                        name: "Account Name"
+                    )
+                ),
+                reducer: AccountFeed.init
+            ) {
+                $0[APIClient.self].overrideAnyGetAccountFeed(
+                    response: [],
+                    throwing: nil
+                )
+            }
         )
     }
     .navigationBarTitleDisplayMode(.inline)

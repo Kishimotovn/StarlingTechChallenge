@@ -10,6 +10,14 @@ The App contains a 3 screens, each with specific function:
 - AccountList: This screen displays a list of the user's accounts retrieved from the Starling Bank API. Users can select an account to view its transaction feed.
 - AccountFeed: This screen shows the transaction feed for the selected account. It includes a "Round Up" button, which allows users to round up their transactions for the week and transfer the difference to a savings goal. If the user doesn't have a savings goal set up, the app will guide them through the process of creating one.
 
+Other packages including:
+
+- AuthClient: Dependency that provide authentication information to the rest of the app, at the moment it provide a simple [interface](Sources/AuthClient/AuthClientLive.swift) to provide the access token provided by the Starling Developer Portal.
+- ConfigConstant: A module that loads environment specific configs that is bundled with the app (through a plist), such as the APIBaseURl (for sandbox/production/etc.)
+- APIClient: API Client that implements URL Requests for the Starling APIs as documented in the [API Reference](https://developer.starlingbank.com/docs#api-reference-1). This package also define all API models and perform conversion to domain models defined in the Models package.
+- Models: Package that contains domain models used in the app.
+- Utils: Extensions and utilities that are useful throughout the app.
+
 Each feature or screen is separated into its own Swift package, making it easier to maintain, colaborate and extend the codebase.
 
 ## Screen shots/Videos:

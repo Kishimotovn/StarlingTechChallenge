@@ -26,7 +26,8 @@ let package = Package(
         .library(name: $0, targets: [$0])
     },
     dependencies: [
-        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", .upToNextMajor(from: "1.9.0"))
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", .upToNextMajor(from: "1.9.0")),
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
     ],
     targets: [
         .target(
@@ -35,7 +36,8 @@ let package = Package(
                 "APIClient",
                 "Models",
                 "Utils",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SnapKit", package: "SnapKit")
             ]
         ),
         .target(
@@ -44,7 +46,9 @@ let package = Package(
                 "AccountFeed",
                 "APIClient",
                 "Models",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+                "Utils",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SnapKit", package: "SnapKit")
             ]
         ),
         .target(
@@ -82,7 +86,8 @@ let package = Package(
             dependencies: [
                 "APIClient",
                 "Models",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SnapKit", package: "SnapKit")
             ]
         ),
         .target(

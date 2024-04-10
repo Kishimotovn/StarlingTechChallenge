@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F4391A52BC2778700C7401D"
-               BuildableName = "StarlingTechChallenge.app"
-               BlueprintName = "StarlingTechChallenge"
+               BlueprintIdentifier = "0FDAD2352BC6B896000CC54F"
+               BuildableName = "StarlingTechChallenge-UIKit.app"
+               BlueprintName = "StarlingTechChallenge-UIKit"
                ReferencedContainer = "container:StarlingTechChallenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,13 +27,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:StarlingTechChallenge.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -49,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0F4391A52BC2778700C7401D"
-            BuildableName = "StarlingTechChallenge.app"
-            BlueprintName = "StarlingTechChallenge"
+            BlueprintIdentifier = "0FDAD2352BC6B896000CC54F"
+            BuildableName = "StarlingTechChallenge-UIKit.app"
+            BlueprintName = "StarlingTechChallenge-UIKit"
             ReferencedContainer = "container:StarlingTechChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -66,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0F4391A52BC2778700C7401D"
-            BuildableName = "StarlingTechChallenge.app"
-            BlueprintName = "StarlingTechChallenge"
+            BlueprintIdentifier = "0FDAD2352BC6B896000CC54F"
+            BuildableName = "StarlingTechChallenge-UIKit.app"
+            BlueprintName = "StarlingTechChallenge-UIKit"
             ReferencedContainer = "container:StarlingTechChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

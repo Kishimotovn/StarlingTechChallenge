@@ -11,7 +11,13 @@
 		0F4391AE2BC2778900C7401D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F4391AD2BC2778900C7401D /* Assets.xcassets */; };
 		0F4391B22BC2778900C7401D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F4391B12BC2778900C7401D /* Preview Assets.xcassets */; };
 		0F6FA4A42BC30EC20065FE4D /* ConfigConstant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F6FA4A32BC30EC20065FE4D /* ConfigConstant.plist */; };
+		0FDAD2392BC6B896000CC54F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAD2382BC6B896000CC54F /* AppDelegate.swift */; };
+		0FDAD23B2BC6B896000CC54F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAD23A2BC6B896000CC54F /* SceneDelegate.swift */; };
+		0FDAD2422BC6B897000CC54F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAD2412BC6B897000CC54F /* Assets.xcassets */; };
+		0FDAD2452BC6B897000CC54F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAD2442BC6B897000CC54F /* Base */; };
+		0FDAD24D2BC6BA61000CC54F /* ConfigConstant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAD24C2BC6BA61000CC54F /* ConfigConstant.plist */; };
 		0FE7535F2BC2897600135D14 /* AppRoot in Frameworks */ = {isa = PBXBuildFile; productRef = 0FE7535E2BC2897600135D14 /* AppRoot */; };
+		0FF5584C2BC707D900CF76E9 /* AppRoot in Frameworks */ = {isa = PBXBuildFile; productRef = 0FF5584B2BC707D900CF76E9 /* AppRoot */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +29,13 @@
 		0F4391D62BC2828400C7401D /* StarlingTechChallenge */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = StarlingTechChallenge; path = ..; sourceTree = "<group>"; };
 		0F6FA4A32BC30EC20065FE4D /* ConfigConstant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigConstant.plist; sourceTree = "<group>"; };
 		0F6FA4A72BC3F1660065FE4D /* StarlingTechChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = StarlingTechChallenge.xctestplan; sourceTree = "<group>"; };
+		0FDAD2362BC6B896000CC54F /* StarlingTechChallenge-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StarlingTechChallenge-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FDAD2382BC6B896000CC54F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0FDAD23A2BC6B896000CC54F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0FDAD2412BC6B897000CC54F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0FDAD2442BC6B897000CC54F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0FDAD2462BC6B897000CC54F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FDAD24C2BC6BA61000CC54F /* ConfigConstant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigConstant.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +47,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FDAD2332BC6B896000CC54F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FF5584C2BC707D900CF76E9 /* AppRoot in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				0F6FA4A72BC3F1660065FE4D /* StarlingTechChallenge.xctestplan */,
+				0FDAD2372BC6B896000CC54F /* StarlingTechChallenge-UIKit */,
 				0F4391A82BC2778700C7401D /* IOS */,
 				0F4391D62BC2828400C7401D /* StarlingTechChallenge */,
 				0F4391A72BC2778700C7401D /* Products */,
@@ -52,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				0F4391A62BC2778700C7401D /* StarlingTechChallenge.app */,
+				0FDAD2362BC6B896000CC54F /* StarlingTechChallenge-UIKit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +97,19 @@
 				0F4391B12BC2778900C7401D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0FDAD2372BC6B896000CC54F /* StarlingTechChallenge-UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				0FDAD24C2BC6BA61000CC54F /* ConfigConstant.plist */,
+				0FDAD2382BC6B896000CC54F /* AppDelegate.swift */,
+				0FDAD23A2BC6B896000CC54F /* SceneDelegate.swift */,
+				0FDAD2412BC6B897000CC54F /* Assets.xcassets */,
+				0FDAD2432BC6B897000CC54F /* LaunchScreen.storyboard */,
+				0FDAD2462BC6B897000CC54F /* Info.plist */,
+			);
+			path = "StarlingTechChallenge-UIKit";
 			sourceTree = "<group>";
 		};
 		0FE7535D2BC2897600135D14 /* Frameworks */ = {
@@ -106,6 +142,26 @@
 			productReference = 0F4391A62BC2778700C7401D /* StarlingTechChallenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0FDAD2352BC6B896000CC54F /* StarlingTechChallenge-UIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FDAD2492BC6B897000CC54F /* Build configuration list for PBXNativeTarget "StarlingTechChallenge-UIKit" */;
+			buildPhases = (
+				0FDAD2322BC6B896000CC54F /* Sources */,
+				0FDAD2332BC6B896000CC54F /* Frameworks */,
+				0FDAD2342BC6B896000CC54F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StarlingTechChallenge-UIKit";
+			packageProductDependencies = (
+				0FF5584B2BC707D900CF76E9 /* AppRoot */,
+			);
+			productName = "StarlingTechChallenge-UIKit";
+			productReference = 0FDAD2362BC6B896000CC54F /* StarlingTechChallenge-UIKit.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -117,6 +173,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					0F4391A52BC2778700C7401D = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					0FDAD2352BC6B896000CC54F = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -135,6 +194,7 @@
 			projectRoot = "";
 			targets = (
 				0F4391A52BC2778700C7401D /* StarlingTechChallenge */,
+				0FDAD2352BC6B896000CC54F /* StarlingTechChallenge-UIKit */,
 			);
 		};
 /* End PBXProject section */
@@ -150,6 +210,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FDAD2342BC6B896000CC54F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FDAD24D2BC6BA61000CC54F /* ConfigConstant.plist in Resources */,
+				0FDAD2422BC6B897000CC54F /* Assets.xcassets in Resources */,
+				0FDAD2452BC6B897000CC54F /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -161,7 +231,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FDAD2322BC6B896000CC54F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FDAD2392BC6B896000CC54F /* AppDelegate.swift in Sources */,
+				0FDAD23B2BC6B896000CC54F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0FDAD2432BC6B897000CC54F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FDAD2442BC6B897000CC54F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0F4391C92BC2778900C7401D /* Debug */ = {
@@ -356,6 +446,65 @@
 			};
 			name = Release;
 		};
+		0FDAD2472BC6B897000CC54F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3CX8V8RKPT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "StarlingTechChallenge-UIKit/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.starling.techchallenge.anh.StarlingTechChallenge-UIKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0FDAD2482BC6B897000CC54F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3CX8V8RKPT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "StarlingTechChallenge-UIKit/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.starling.techchallenge.anh.StarlingTechChallenge-UIKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -377,10 +526,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0FDAD2492BC6B897000CC54F /* Build configuration list for PBXNativeTarget "StarlingTechChallenge-UIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FDAD2472BC6B897000CC54F /* Debug */,
+				0FDAD2482BC6B897000CC54F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		0FE7535E2BC2897600135D14 /* AppRoot */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppRoot;
+		};
+		0FF5584B2BC707D900CF76E9 /* AppRoot */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppRoot;
 		};

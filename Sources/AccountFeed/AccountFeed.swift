@@ -10,7 +10,8 @@ public struct AccountFeed {
     static let savingsGoalDefaultName = "Tech Challenge Round Up!"
 
     @ObservableState
-    public struct State: Equatable {
+    public struct State: Equatable, Identifiable {
+        public var id: UUID { self.account.id }
         public struct RoundUpSavingsRequest: Equatable {
             var goal: SavingsGoal
             var amount: CurrencyAndAmount

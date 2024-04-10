@@ -4,7 +4,8 @@ import ComposableArchitecture
 import SnapKit
 import Models
 
-public class AccountFeedViewController: UIViewController {
+@MainActor
+public final class AccountFeedViewController: UIViewController {
     private let store: StoreOf<AccountFeed>
     private let accountFeedTableView: UITableView = .init()
     private let headerStack: UIStackView = .init()
@@ -20,6 +21,7 @@ public class AccountFeedViewController: UIViewController {
         let label = UILabel()
         label.text = "No transactions occured during this period."
         label.font = .preferredFont(forTextStyle: .caption1)
+        label.textAlignment = .center
         return label
     }()
     
@@ -51,8 +53,8 @@ public class AccountFeedViewController: UIViewController {
             self.store.isLoading ? self.loadingIndicatorView.startAnimating() : self.loadingIndicatorView.stopAnimating()
             self.nextWeekButton.isEnabled = !self.store.isLoading && !self.store.isRoundingUp
             self.prevWeekButton.isEnabled = !self.store.isLoading && !self.store.isRoundingUp
+            self.roundUpBarButtonItem.isEnabled = !store.isLoading
         }
-
         observe { [weak self] in
             guard let self else { return }
             self.navigationItem.rightBarButtonItem = self.store.isRoundingUp ?  .init(customView: self.roundingUpIndicatorView) : self.roundUpBarButtonItem
@@ -63,7 +65,6 @@ public class AccountFeedViewController: UIViewController {
             self.feedItems = self.store.feedItems.elements
             self.accountFeedTableView.reloadData()
         }
-        
         observe { [weak self] in
             guard let self else { return }
 

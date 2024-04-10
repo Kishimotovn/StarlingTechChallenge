@@ -5,7 +5,8 @@ import SnapKit
 import Utils
 import SwiftUI
 
-class AccountListItemCell: UITableViewCell, IdentifiedCell {
+@MainActor
+final class AccountListItemCell: UITableViewCell, IdentifiedCell {
     private let stackView: UIStackView = .init()
     private let titleLabel: UILabel = .init()
     private let subtitleLabel: UILabel = .init()

@@ -5,7 +5,8 @@ import SnapKit
 import Utils
 import SwiftUI
 
-class AccountFeedItemCell: UITableViewCell, IdentifiedCell {
+@MainActor
+final class AccountFeedItemCell: UITableViewCell, IdentifiedCell {
     private let containerHStack: UIStackView = .init()
     private let directionIconView: UIImageView = .init()
     private let titleLabel: UILabel = .init()
@@ -31,6 +32,7 @@ class AccountFeedItemCell: UITableViewCell, IdentifiedCell {
         self.directionIconView.image = UIImage(systemName: self.viewModel.direction.icon)
         self.titleLabel.text = self.viewModel.title
         self.subtitleLabel.text = self.viewModel.subtitle
+        self.subtitleLabel.isHidden = self.viewModel.subtitle.isEmpty
         self.transactionTypeLabel.text = self.viewModel.source?.description ?? "N/A"
     }
     

@@ -5,7 +5,8 @@ import SnapKit
 import AccountFeed
 import Models
 
-public class AccountListViewController: UIViewController {
+@MainActor
+public final class AccountListViewController: UIViewController {
     private let store: StoreOf<AccountList>
     private let accountListTableView: UITableView = .init()
     private var accounts: [Account] = []

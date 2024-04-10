@@ -4,6 +4,7 @@ import DataLoad
 import AccountList
 import ComposableArchitecture
 
+@MainActor
 public final class AppRootViewController: UIViewController {
     private let store: StoreOf<AppRoot>
     private var currentViewController = UIViewController() {

@@ -9,6 +9,7 @@ The App contains a 3 screens, each with specific function:
 - DataLoad/AppRoot: This screen is loaded at app start-up and handles the initial data loading process, ensuring that the user's authentication token is valid and can be used to make API calls. It's designed as the entry point for the user, can be easy expanded to more features such as: force update/device checks etc if needed.
 - AccountList: This screen displays a list of the user's accounts retrieved from the Starling Bank API. Users can select an account to view its transaction feed.
 - AccountFeed: This screen shows the transaction feed for the selected account. It includes a "Round Up" button, which allows users to round up their transactions for the week and transfer the difference to a savings goal. If the user doesn't have a savings goal set up, the app will guide them through the process of creating one.
+- The user is alerted multiple time to confirm their actions: creating of savings goal, transfer to savings goal, successful transfer, errors
 
 Other packages including:
 

@@ -84,12 +84,14 @@ final class AccountFeedTests: XCTestCase {
             )
         }
         
+        // When user tap the round up button
         await store.send(.view(.roundUpTapped)) {
             $0.isRoundingUp = true
         }
         
         let roundUpRequest = AccountFeed.State.RoundUpSavingsRequest(goal: goal, amount: expectedRoundUpAmount)
         
+        // Alert the amount
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -105,9 +107,12 @@ final class AccountFeedTests: XCTestCase {
             }
         }
         
+        // User press confirm
         await store.send(.alert(.presented(.sendRoundUpAmountToSavingsGoal(request: roundUpRequest)))) {
             $0.alert = nil
         }
+        
+        // User is alerted of the error
         await store.receive(\.apiErrorsUpdated, .init([error.localizedDescription])) {
             $0.apiErrors = .init([error.localizedDescription])
             $0.alert = .init {
@@ -157,11 +162,13 @@ final class AccountFeedTests: XCTestCase {
                 throwing: error
             )
         }
-        
+
+        // When user tap the round up button
         await store.send(.view(.roundUpTapped)) {
             $0.isRoundingUp = true
         }
         
+        // User is alert that a new savings goal need to be created
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -177,10 +184,12 @@ final class AccountFeedTests: XCTestCase {
             }
         }
         
+        // User confirm
         await store.send(.alert(.presented(.savingsAccountCreationRequired))) {
             $0.alert = nil
         }
         
+        // User get alerted with the error
         await store.receive(\.apiErrorsUpdated, .init([error.localizedDescription])) {
             $0.apiErrors = .init([error.localizedDescription])
             $0.alert = .init {
@@ -224,10 +233,13 @@ final class AccountFeedTests: XCTestCase {
                 throwing: error
             )
         }
-        
+
+        // When user tap the round up button
         await store.send(.view(.roundUpTapped)) {
             $0.isRoundingUp = true
         }
+        
+        // User get alerted with the error when trying to get savings goals
         await store.receive(\.apiErrorsUpdated, .init([error.localizedDescription])) {
             $0.apiErrors = .init([error.localizedDescription])
             $0.alert = .init {
@@ -263,7 +275,7 @@ final class AccountFeedTests: XCTestCase {
                 TextState("Dismiss")
             }
         }
-        
+
         let store = TestStore(
             initialState: AccountFeed.State(
                 account: account,
@@ -272,7 +284,7 @@ final class AccountFeedTests: XCTestCase {
             ),
             reducer: AccountFeed.init
         )
-        
+
         await store.send(.alert(.dismiss)) {
             $0.alert = nil
         }
@@ -370,12 +382,14 @@ final class AccountFeedTests: XCTestCase {
             )
         }
         
+        // When user press round up
         await store.send(.view(.roundUpTapped)) {
             $0.isRoundingUp = true
         }
         
         let roundUpRequest = AccountFeed.State.RoundUpSavingsRequest(goal: goal, amount: expectedRoundUpAmount)
         
+        // User is alerted about the amount
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -391,9 +405,12 @@ final class AccountFeedTests: XCTestCase {
             }
         }
         
+        // User confirm they want to transfer
         await store.send(.alert(.presented(.sendRoundUpAmountToSavingsGoal(request: roundUpRequest)))) {
             $0.alert = nil
         }
+        
+        // User is alert that the transfer is successful
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -409,6 +426,7 @@ final class AccountFeedTests: XCTestCase {
             $0.isRoundingUp = false
         }
         
+        // Refresh feed
         await store.send(.alert(.presented(.refreshFeed))) {
             $0.alert = nil
             $0.isLoading = true
@@ -505,9 +523,12 @@ final class AccountFeedTests: XCTestCase {
             )
         }
         
+        // When user press round up
         await store.send(.view(.roundUpTapped)) {
             $0.isRoundingUp = true
         }
+        
+        // User is alerted that a savings goal is to be created
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -525,9 +546,12 @@ final class AccountFeedTests: XCTestCase {
 
         let roundUpRequest = AccountFeed.State.RoundUpSavingsRequest(goal: goal, amount: expectedRoundUpAmount)
 
+        // User Confirms
         await store.send(.alert(.presented(.savingsAccountCreationRequired))) {
             $0.alert = nil
         }
+        
+        // User is alerted about the amount to be transfered
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -543,9 +567,12 @@ final class AccountFeedTests: XCTestCase {
             }
         }
 
+        // User confirm
         await store.send(.alert(.presented(.sendRoundUpAmountToSavingsGoal(request: roundUpRequest)))) {
             $0.alert = nil
         }
+        
+        // User is alerted that the transfer is successful
         await store.receive(\.alertUpdated) {
             $0.alert = .init {
                 TextState("Notice!")
@@ -561,6 +588,7 @@ final class AccountFeedTests: XCTestCase {
             $0.isRoundingUp = false
         }
 
+        // User confirms -> the feed is refreshed
         await store.send(.alert(.presented(.refreshFeed))) {
             $0.alert = nil
             $0.isLoading = true

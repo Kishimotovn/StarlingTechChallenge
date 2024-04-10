@@ -16,6 +16,12 @@ public class AccountFeedViewController: UIViewController {
     private var roundingUpIndicatorView: UIActivityIndicatorView = .init(style: .medium)
     private var feedItems: [AccountFeedItem] = []
     private weak var alertController: UIAlertController?
+    private lazy var emptyTableBackgroundView: UIView = {
+        let label = UILabel()
+        label.text = "No transactions occured during this period."
+        label.font = .preferredFont(forTextStyle: .caption1)
+        return label
+    }()
     
     @objc private func onNextWeekTapped(sender: UIButton) {
         self.store.send(.view(.nextWeekTapped))
@@ -104,7 +110,7 @@ public class AccountFeedViewController: UIViewController {
         self.nextWeekButton.snp.makeConstraints { make in
             make.height.width.equalTo(30)
         }
-        self.weekIntervalLabel.font = .systemFont(ofSize: 16)
+        self.weekIntervalLabel.font = .preferredFont(forTextStyle: .headline)
         self.loadingIndicatorView.hidesWhenStopped = true
         
         self.prevWeekButton = UIButton(
@@ -154,6 +160,11 @@ extension AccountFeedViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.feedItems.isEmpty {
+            tableView.backgroundView = self.emptyTableBackgroundView
+        } else {
+            tableView.backgroundView = nil
+        }
         return self.feedItems.count
     }
     

@@ -74,7 +74,7 @@ class AccountListItemCell: UITableViewCell, IdentifiedCell {
     }
 
     private func setupCurrencyLabel() {
-        self.currencyLabel.font = .boldSystemFont(ofSize: 16)
+        self.currencyLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         self.currencyLabel.setContentHuggingPriority(.required, for: .horizontal)
         self.currencyLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         self.stackView.addArrangedSubview(self.currencyLabel)
@@ -94,9 +94,9 @@ class AccountListItemCell: UITableViewCell, IdentifiedCell {
         let container = UIStackView()
         container.axis = .vertical
         container.spacing = 2
-        self.titleLabel.font = .boldSystemFont(ofSize: 18)
+        self.titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         container.addArrangedSubview(self.titleLabel)
-        self.subtitleLabel.font = .systemFont(ofSize: 12)
+        self.subtitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         container.addArrangedSubview(self.subtitleLabel)
         self.stackView.addArrangedSubview(container)
     }

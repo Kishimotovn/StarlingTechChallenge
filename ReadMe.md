@@ -6,6 +6,7 @@ This is an iOS application built with Swift and UIKit/SwiftUI, following the Com
 
 - The project contains 2 targets, one build with UIKit and one built with SwiftUI.
 - Only the UI layer is built differently, all business logic is shared between the 2 targets.
+- UI supports dynamic font + dynamic theme (dark + light)
 
 The App contains a 3 screens, each with specific function:
 

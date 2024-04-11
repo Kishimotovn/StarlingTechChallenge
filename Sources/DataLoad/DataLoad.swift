@@ -10,8 +10,9 @@ public struct DataLoad {
         var errorMessage: String?
         var isLoadingData: Bool = false
 
-        public init() { 
-            
+        public init(isLoadingData: Bool = false, errorMessage: String? = nil) {
+            self.isLoadingData = isLoadingData
+            self.errorMessage = errorMessage
         }
     }
 

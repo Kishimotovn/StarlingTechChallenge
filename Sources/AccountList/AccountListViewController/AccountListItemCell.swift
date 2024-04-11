@@ -5,7 +5,6 @@ import SnapKit
 import Utils
 import SwiftUI
 
-@MainActor
 final class AccountListItemCell: UITableViewCell, IdentifiedCell {
     // MARK: - Views:
     private let containerHStack: UIStackView = .withConfiguration {

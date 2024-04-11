@@ -50,6 +50,13 @@
         "identifier" : "APIClientTests",
         "name" : "APIClientTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "AccountListTests",
+        "name" : "AccountListTests"
+      }
     }
   ],
   "version" : 1

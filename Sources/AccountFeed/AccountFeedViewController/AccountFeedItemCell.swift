@@ -4,7 +4,6 @@ import Models
 import SnapKit
 import Utils
 
-@MainActor
 final class AccountFeedItemCell: UITableViewCell, IdentifiedCell {
     // MARK: - Views:
     private let containerHStack: UIStackView = .withConfiguration {
@@ -16,6 +15,9 @@ final class AccountFeedItemCell: UITableViewCell, IdentifiedCell {
         $0.clipsToBounds = true
         $0.layoutMargins = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
         $0.isLayoutMarginsRelativeArrangement = true
+        $0.snp.makeConstraints {
+            $0.height.equalTo(70)
+        }
     }
     private let directionIconView: UIImageView = .withConfiguration {
         $0.snp.makeConstraints { make in

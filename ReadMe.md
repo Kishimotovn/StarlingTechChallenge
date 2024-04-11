@@ -1,8 +1,11 @@
 # Starling Bank Engineering Technical Challenge - iOS App (SwiftUI)
 
-This is an iOS application built with Swift and SwiftUI, following the Composable Architecture ([TCA](https://github.com/pointfreeco/swift-composable-architecture)) pattern. The app is designed to provide a "round-up" feature for Starling Bank customers, allowing them to round up their transactions to the nearest pound and transfer the difference to a savings goal.
+This is an iOS application built with Swift and UIKit/SwiftUI, following the Composable Architecture ([TCA](https://github.com/pointfreeco/swift-composable-architecture)) pattern. The app is designed to provide a "round-up" feature for Starling Bank customers, allowing them to round up their transactions to the nearest pound and transfer the difference to a savings goal.
 
 ## Features
+
+- The project contains 2 targets, one build with UIKit and one built with SwiftUI.
+- Only the UI layer is built differently, all business logic is shared between the 2 targets.
 
 The App contains a 3 screens, each with specific function:
 
@@ -19,7 +22,7 @@ Other packages including:
 - Models: Package that contains domain models used in the app.
 - Utils: Extensions and utilities that are useful throughout the app.
 
-Each feature or screen is separated into its own Swift package, making it easier to maintain, colaborate and extend the codebase.
+Each feature or screen is separated into its own Swift package, declared in the project's [Package](/Package.swift), making it easier to maintain, colaborate and extend the codebase.
 
 ## Screen shots/Videos:
 
@@ -41,13 +44,20 @@ Ultimately, the Composable Architecture (TCA) pattern was chosen for the followi
 
 Each feature or screen is separated into its own Swift package, making it easier to maintain and extend the codebase.
 
-## SwiftUI
+## UI
 
-Instead of using UIKit, this app is built with SwiftUI, Apple's modern declarative UI framework. SwiftUI provides a more efficient and streamlined way to build user interfaces, with a focus on reactive programming and a declarative syntax.
+The UI layer is completely decoupled from the app's logic, thus making it very straight forward to apply any kind of UI framework we have and not having to change the logic underneath.
+
+The app demonstrated this by having 2 UI layers in 2 different targets (UIKIT vs SwiftUI)
 
 ## Testing
 
+Coverage: 93%
+
 The project includes comprehensive unit tests to ensure the reliability and correctness of the codebase. The tests cover various aspects of the app, including data fetching, business logic, and user interface interactions.
+For UI Layer, snapshot tests are added as well to make sure the UI is as per requirements.
+
+![Test coverage](Assets/test_cov.png)
 
 ## Getting Started
 
@@ -76,12 +86,19 @@ public extension AuthClient {
 
 ```
 
-5. Build and run the app on the desired simulator or device.
+5. Build and run the app on the desired simulator or device:
+
+- For SwiftUI: Build the `StarlingTechChallenge` target
+- For UIKit: Build the `StarlingTechChallenge-UIKit` target
 
 ## Dependencies
 
-The app only replies on [TCA](https://github.com/pointfreeco/swift-composable-architecture), the rest is implemented using Foundation
-SwiftUI: Apple's modern UI framework for building user interfaces.
+The app replies on
+
+1. [TCA](https://github.com/pointfreeco/swift-composable-architecture): The composable architecture framework: provider utilities for easily compose and test features inside the app.
+2. [SnapKit](https://github.com/SnapKit/SnapKit): This library is used for convenience to create Layout constraints for `UIViews`.
+3. [SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing): This library provide tool to perform snapshot testing on views.
+
 The dependencies are managed using the Swift Package Manager and are included in the project.
 
 ## API Integration

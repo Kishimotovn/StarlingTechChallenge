@@ -5,7 +5,6 @@ import SnapKit
 import Models
 import Utils
 
-@MainActor
 public final class AccountFeedViewController: UIViewController {
     private let store: StoreOf<AccountFeed>
 
@@ -27,9 +26,8 @@ public final class AccountFeedViewController: UIViewController {
         $0.spacing = 8
     }
     private lazy var nextWeekButton: UIButton = .withConfiguration {
-        $0.addAction(.init(
-            image: .init(systemName: "chevron.right")
-        ) { [weak self] _ in
+        $0.setImage(.init(systemName: "chevron.right"), for: .normal)
+        $0.addAction(.init { [weak self] _ in
             guard let self else { return }
             self.store.send(.view(.nextWeekTapped))
         }, for: .touchUpInside)
@@ -45,9 +43,8 @@ public final class AccountFeedViewController: UIViewController {
         $0.hidesWhenStopped = true
     }
     private lazy var prevWeekButton: UIButton = .withConfiguration {
-        $0.addAction(.init(
-            image: .init(systemName: "chevron.left")
-        ) { [weak self] _ in
+        $0.setImage(.init(systemName: "chevron.left"), for: .normal)
+        $0.addAction(.init { [weak self] _ in
             guard let self else { return }
             self.store.send(.view(.prevWeekTapped))
         }, for: .touchUpInside)
@@ -92,8 +89,12 @@ public final class AccountFeedViewController: UIViewController {
         }
         observe { [weak self] in
             guard let self else { return }
-            self.navigationItem.rightBarButtonItem = self.store.isRoundingUp ?  .init(customView: self.roundingUpIndicatorView) : self.roundUpBarButtonItem
-            self.store.isRoundingUp ? self.roundingUpIndicatorView.startAnimating() : self.roundingUpIndicatorView.stopAnimating()
+            if self.store.feedItems.isEmpty {
+                self.navigationItem.rightBarButtonItem = nil
+            } else {
+                self.navigationItem.rightBarButtonItem = self.store.isRoundingUp ?  .init(customView: self.roundingUpIndicatorView) : self.roundUpBarButtonItem
+                self.store.isRoundingUp ? self.roundingUpIndicatorView.startAnimating() : self.roundingUpIndicatorView.stopAnimating()
+            }
         }
         observe {[weak self] in
             guard let self else { return }

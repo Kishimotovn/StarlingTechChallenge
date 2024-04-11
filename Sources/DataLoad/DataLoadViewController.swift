@@ -3,7 +3,6 @@ import UIKit
 import ComposableArchitecture
 import Utils
 
-@MainActor
 public final class DataLoadViewController: UIViewController {
     private let store: StoreOf<DataLoad>
 
@@ -32,6 +31,7 @@ public final class DataLoadViewController: UIViewController {
 
     // MARK: - Private Funcs:
     private func bindUI() {
+        self.view.backgroundColor = .systemBackground
         observe { [weak self] in
             guard let self
             else { return }

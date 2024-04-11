@@ -4,7 +4,6 @@ import ComposableArchitecture
 import AccountFeed
 import Models
 
-@MainActor
 public final class AccountListViewController: UIViewController {
     private let store: StoreOf<AccountList>
     

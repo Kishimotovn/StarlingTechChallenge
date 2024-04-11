@@ -27,7 +27,11 @@ let package = Package(
     },
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", .upToNextMajor(from: "1.9.0")),
-        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
+        .package(
+            url: "https://github.com/pointfreeco/swift-snapshot-testing",
+            from: "1.12.0"
+        ),
     ],
     targets: [
         .target(
@@ -107,11 +111,24 @@ let package = Package(
         ),
         .testTarget(
             name: "AccountFeedTests",
-            dependencies: ["AccountFeed"]
+            dependencies: [
+                "AccountFeed",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+            ]
         ),
         .testTarget(
             name: "AppRootTests",
-            dependencies: ["AppRoot"]
+            dependencies: [
+                "AppRoot",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+            ]
+        ),
+        .testTarget(
+            name: "AccountListTests",
+            dependencies: [
+                "AccountList",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+            ]
         ),
         .testTarget(
             name: "APIClientTests",
@@ -119,7 +136,10 @@ let package = Package(
         ),
         .testTarget(
             name: "DataLoadTests",
-            dependencies: ["DataLoad"]
+            dependencies: [
+                "DataLoad",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+            ]
         ),
         .testTarget(
             name: "UtilsTests",

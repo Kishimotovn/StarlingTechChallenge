@@ -56,7 +56,8 @@ let package = Package(
             dependencies: [
                 "AccountList",
                 "DataLoad",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SnapKit", package: "SnapKit")
             ]
         ),
         .target(
@@ -100,7 +101,8 @@ let package = Package(
         .target(
             name: "Utils",
             dependencies: [
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SnapKit", package: "SnapKit")
             ]
         ),
         .testTarget(

@@ -1,35 +1,46 @@
 import Foundation
 import UIKit
 import ComposableArchitecture
-import SnapKit
 import AccountFeed
 import Models
 
 @MainActor
 public final class AccountListViewController: UIViewController {
     private let store: StoreOf<AccountList>
-    private let accountListTableView: UITableView = .init()
-    private var accounts: [Account] = []
     
     public init(store: StoreOf<AccountList>) {
         self.store = store
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    // MARK: - Views
+    private lazy var accountListTableView: UITableView = .withConfiguration {
+        $0.register(AccountListItemCell.self, forCellReuseIdentifier: AccountListItemCell.identifier)
+        $0.separatorStyle = .none
+        $0.dataSource = self
+        $0.backgroundColor = .systemBackground
+        $0.delegate = self
+        $0.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
     }
-    
+
+    // MARK: - View Lifecycle:
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
+        self.bindUI()
+    }
+    
+    // MARK: - Private:
+    private var accounts: [Account] = []
+    private func bindUI() {
         observe { [weak self] in
             guard let self else { return }
             self.accounts = self.store.accounts.elements
             self.accountListTableView.reloadData()
         }
     }
-    
+
+    // MARK: - Layout Views:
     private func setupViews() {
         self.title = "Your Accounts"
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -37,19 +48,17 @@ public final class AccountListViewController: UIViewController {
     }
     
     private func setupAccountListTableView() {
-        self.accountListTableView.register(AccountListItemCell.self, forCellReuseIdentifier: AccountListItemCell.identifier)
-        self.accountListTableView.separatorStyle = .none
-        self.accountListTableView.dataSource = self
-        self.accountListTableView.backgroundColor = .systemBackground
-        self.accountListTableView.delegate = self
-        self.view.addSubview(self.accountListTableView)
-        self.accountListTableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
-        self.accountListTableView.snp.makeConstraints { make in
+        self.view.addSubview(self.accountListTableView) { make in
             make.edges.equalTo(self.view)
         }
     }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
+// MARK: - UITableView Datasource
 extension AccountListViewController: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -61,19 +70,23 @@ extension AccountListViewController: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AccountListItemCell.identifier, for: indexPath) as! AccountListItemCell
-        if let item = self.accounts.get(at: indexPath.row) {
-            cell.viewModel = .init(title: item.name, subtitle: item.accountType.description, currency: item.currency)
+        if let account = self.accounts.get(at: indexPath.row) {
+            cell.account = account
         }
         return cell
     }
 }
 
+// MARK: - UITableView Delegate
 extension AccountListViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = store.acountFeedPaths[indexPath.row].id
-        if let store = store.scope(state: \.acountFeedPaths[id:id], action: \.acountFeedPaths[id:id]) {
-            navigationController?.pushViewController(AccountFeedViewController(store: store), animated: true)
+        guard 
+            let id = self.store.acountFeedPaths.get(at: indexPath.row)?.id,
+            let store = self.store.scope(state: \.acountFeedPaths[id:id], action: \.acountFeedPaths[id:id])
+        else {
+            return
         }
+        self.navigationController?.pushViewController(AccountFeedViewController(store: store), animated: true)
     }
 }
 

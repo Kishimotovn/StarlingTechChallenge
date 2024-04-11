@@ -7,6 +7,12 @@ import ComposableArchitecture
 @MainActor
 public final class AppRootViewController: UIViewController {
     private let store: StoreOf<AppRoot>
+    public init(store: StoreOf<AppRoot>) {
+        self.store = store
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    // MARK: - Contained ViewController Stack:
     private var currentViewController = UIViewController() {
         willSet {
             currentViewController.willMove(toParent: nil)
@@ -18,15 +24,7 @@ public final class AppRootViewController: UIViewController {
         }
     }
 
-    public init(store: StoreOf<AppRoot>) {
-        self.store = store
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+    // MARK: - View Life Cycle:
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,5 +44,9 @@ public final class AppRootViewController: UIViewController {
                 }
             }
         }
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
